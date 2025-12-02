@@ -48,7 +48,19 @@ const HomePage = () => {
         return true;
     }
   });
-
+  const handleNext = () => {
+    if (page < totalPages) {
+      setPage((pre) => pre + 1);
+    }
+  };
+  const handlePre = () => {
+    if (page > 1) {
+      setPage((pre) => pre - 1);
+    }
+  };
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
   const visibleTasks = filteredTasks.slice(
     (page - 1) * visibleTaskLimit,
     page * visibleTaskLimit
@@ -63,19 +75,6 @@ const HomePage = () => {
     fetchTasks();
   };
 
-  const handleNext = () => {
-    if (page < totalPages) {
-      setPage((pre) => pre + 1);
-    }
-  };
-  const handlePre = () => {
-    if (page > 1) {
-      setPage((pre) => pre - 1);
-    }
-  };
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
   return (
     <div className="min-h-screen w-full relative">
       {/* Violet Abyss */}
